@@ -20,18 +20,19 @@ class Image
     array.each do |row|                       # Iterate over each array inside the master array
       copy << row.clone                       # Create clone of each sub-array inside secondary array for clean reference
     end
-    array.each_with_index do |row, x|                       # Iterate over each array inside the master array
-      row.each_with_index do |coord, y|                     # Iterate over each element inside each sub-array
-        if copy[x][y] == 1                                  # Check clean copy if coord == 0 or == 1
-          array[x+1][y] = 1 unless x+1 > array.count-1      # Set adjacent coord to 1
-          array[x-1][y] = 1 unless x-1 < 0                  # Set adjacent coord to 1
-          array[x][y+1] = 1 unless y+1 > array[0].count-1   # Set adjacent coord to 1
-          array[x][y-1] = 1 unless y-1 < 0                  # Set adjacent coord to 1
+    array.each_with_index do |row, x|         # Iterate over each array inside the master array
+      row.each_with_index do |coord, y|       # Iterate over each element inside each sub-array
+        if copy[x][y] == 1                    # Check clean copy if coord == 0 or == 1
+          array[x+1][y] = 1 unless x+1 > 3    # Set adjacent coord to 1
+          array[x-1][y] = 1 unless x-1 < 0    # Set adjacent coord to 1
+          array[x][y+1] = 1 unless y+1 > 3    # Set adjacent coord to 1
+          array[x][y-1] = 1 unless y-1 < 0    # Set adjacent coord to 1
         end
       end                 
     end
     return output_image
   end
+
 end
 
 image = Image.new([           # Create & assign new Image object
