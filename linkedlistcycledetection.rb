@@ -17,19 +17,19 @@ def print_values(list_node)
   end
 end
 
-def floyd(list_node)
-  hare = list_node
-  tort = list_node
-  while hare.next_node != nil
-    hare = hare.next_node
-    hare = hare.next_node
-    tort = tort.next_node
-    if hare == tort
-      return true
+def floyd(list_node)                # Init method to check for cycle
+  hare = list_node                  # Set var hare to first node
+  tort = list_node                  # Set var tort to first node
+  while hare.next_node != nil       # While loop - run when hare.next isn't nil (not at end)
+    hare = hare.next_node             # Move hare one spot forward
+    hare = hare.next_node             # Move hare another spot forward
+    tort = tort.next_node             # Move tort one spot forward
+    if hare == tort                   # Check if they're at the same spot
+      return true                     # If so, it's a loop!
     end
   end
-  return false
-end
+  return false                      # If they reach here, the hare is at the end
+end                                 # Meaning that it's not a loop.
 
 node1 = LinkedListNode.new(37)
 node2 = LinkedListNode.new(99, node1)
